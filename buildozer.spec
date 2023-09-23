@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,kivy,kivymd,opencv-python,face-recognition,numpy,google-auth,google-cloud-storage,requests,
+requirements = python3==3.9.12,hostpython3==3.9.12,kivy,kivymd,opencv-python,face-recognition,numpy,google-auth,google-cloud-storage,requests, pillow
 
 
 # (str) Custom source folders for requirements
@@ -65,7 +65,7 @@ orientation = portrait
 # author = © Copyright Info
 
 # change the major version of python used by the app
-osx.python_version = 3
+osx.python_version = 3.9.12
 
 # Kivy version to use
 osx.kivy_version = 1.9.1
