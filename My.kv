@@ -1,0 +1,732 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+
+<Demo>:
+    MDBottomNavigation:
+        panel_color: get_color_from_hex("#000000")
+        text_color_active: get_color_from_hex("#FFFFFF")
+        MDBottomNavigationItem:
+            name: 'Home'
+            text: "Home"
+            icon: 'home'
+            FloatLayout: 
+                Image:
+                    source: '../Camera Roll./Untitled-25.png'
+                    allow_stretch: True
+                    keep_ratio: False
+                Imageandbackground:
+                MDLabel:  
+                    text: "Welcome your name"   
+                    halign: 'center'
+                    size_hint_y: 1.92
+                
+
+                RoundedButton:
+                    text: 'Check For nearest police station ---->'
+                    color: get_color_from_hex("#000000")
+                    pos_hint: {'center_x': 0.5, 'top': .65}
+                    size_hint: (.87, .13)
+                    on_press: root.NearestPoliceStation()                    
+
+                RoundedButton2:
+                    text: '<---- Add image of a missing person'  
+                    color: get_color_from_hex("#000000")
+                    pos_hint: {'center_x':0.5,'top':.50}
+                    size_hint: (.87,.13)
+                    on_press: root.manager.current = 'EnterLostChildDetails'
+                RoundedButton3:
+                    text: 'Scan face & Alert nearest  ---->\nPolice station '  
+                    color: get_color_from_hex("#000000")
+                    pos_hint: {'center_x':0.5,'top':.35}
+                    size_hint: (.87,.13)
+                    on_press: root.manager.current = 'PageTwo'
+                RoundedButton4:
+                    text: 'Emergency Call'  
+                    pos_hint: {'center_x':0.5,'top':.20}
+                    size_hint: (.87,.13)
+                    on_press: root.EmergencyCall()
+                
+        MDBottomNavigationItem:
+            name: 'FR'
+            text: "Face Recognition"
+            icon: 'face-recognition'
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: dp(20)
+                padding: dp(60)
+
+            Image:
+                source: '../Camera Roll./Untitled-2.png'
+                allow_stretch: True
+                keep_ratio: False
+
+
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: dp(20)
+                padding: dp(60)
+
+
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint: None, None
+                    size: dp(240), dp(145)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+
+                    Button:
+                        text: "hello"
+                        font_size: 32
+                        background_normal: ''
+                        background_color: get_color_from_hex('#FAFBFC')
+                        on_press: root.hello_on()
+                        on_release: root.manager.current = 'PageTwo'
+                        on_release: root.hello_off()
+                        on_release: root.hello_off()
+
+                        Image:
+                            id: my_image
+                            source: '../Camera Roll./Untitled-3.png'
+                            center_x: self.parent.center_x
+                            center_y: self.parent.center_y
+                            size: dp(280), dp(175)
+
+
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint: None, None
+                    size: dp(250), dp(135)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                    Button:
+                        text: "Choose photo from gallery"
+                        text_color: get_color_from_hex('#494646')
+                        md_bg_color: get_color_from_hex('#DDF0E9')
+                        on_press: root.hello_on2()
+                        on_release: root.manager.current = 'PageOne'
+                       # on_release: root.FaceRecoginiton()
+                        on_release: root.hello_off2()
+
+
+                        Image:
+                            id: my_image2
+                            source: '../Camera Roll./Untitled-4.png'
+                            center_x: self.parent.center_x
+                            center_y: self.parent.center_y
+                            size: dp(280), dp(175)
+        MDBottomNavigationItem:
+            name: 'Profile'
+            text: "Profile"
+            icon: 'login'
+            FloatLayout:
+                Image:
+                    source: '../Camera Roll./Untitled-25.png'
+                    allow_stretch: True
+                    keep_ratio: False
+                MDLabel:
+                    text: "Name Surname"
+                    pos_hint: {"x":0.10, "top": 1.4}
+
+                RoundedButton4:
+                    text: 'Logout'
+                    color: get_color_from_hex("#000000")
+                    pos_hint: {"x":0.7, "top": 0.7}
+                    size_hint: (.24, .08)
+                    on_press: root.manager.current = 'LoginPage'
+
+
+
+                Button:
+                    on_press: root.HelpCenter()
+                    size_hint: (0.08, 0.08)
+                    pos_hint: {"x":0.85, "top": 0.5}
+                    background_color :0,0,0,0
+                Image:
+                    source: r'./images./profileimg3.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.85, "top": 0.5}
+                MDLabel:
+                    text: "Help Center"
+                    pos_hint: {"x":0.21, "top": 0.96}
+                Image:
+                    source: r'./images./profileimg1.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.08, "top": 0.5}
+
+                Button:
+                    on_press: root.MessageCenter()
+                    size_hint: (0.08, 0.08)
+                    pos_hint: {"x":0.85, "top": 0.4}
+                    background_color :0,0,0,0
+                Image:
+                    source: r'./images./profileimg3.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.85, "top": 0.4}
+                Image:
+                    source: r'./images./profileimg2.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.08, "top": 0.4}
+                MDLabel:
+                    text: "Message Center"
+                    pos_hint: {"x":0.21, "top": 0.86}
+
+                Button:
+                    on_press: root.AboutUs()
+                    size_hint: (0.08, 0.08)
+                    pos_hint: {"x":0.85, "top": 0.3}
+                    background_color :0,0,0,0
+                Image:
+                    source: r'./images./profileimg3.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.85, "top": 0.3}
+                MDLabel:
+                    text: "About Us"
+                    text_color: get_color_from_hex("#000000")
+                    pos_hint: {"x":0.21, "top": 0.76}
+                Image:
+                    source: r'./images./profileimg4.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.08, "top": 0.3}
+
+                Button:
+                    on_press: root.Settings()
+                    size_hint: (0.08, 0.08)
+                    pos_hint: {"x":0.85, "top": 0.2}
+                    background_color :0,0,0,0
+                Image:
+                    source: r'./images./profileimg3.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.85, "top": 0.2}
+                MDLabel:
+                    text: "Settings"
+                    pos_hint: {"x":0.21, "top": 0.66}
+                Image:
+                    source: r'./images./profileimg1.png'
+                    size_hint: (0.09, 0.09)
+                    pos_hint: {"x":0.08, "top": 0.2}
+
+<LoginPage>:
+    name: 'LoginPage'
+    FloatLayout:
+        MDLabel:
+            text: "Welcome to Login Page"
+            pos_hint : {"x":0.25, "top":1.4}
+        MDTextField:
+            id: Email
+            email: True
+            hint_text: "Email"
+            helper_text_mode: "persistent"
+            pos_hint : {"x":0.2,"top":0.7}
+            size_hint: (0.6, 0.13)
+        MDTextField:
+            id: Password
+            password: True
+            hint_text: "Password"
+            helper_text_mode: "persistent"
+            pos_hint : {"x":0.2,"top":0.6}
+            size_hint: (0.6, 0.13)
+        RoundedButton2:
+            text: "Register"
+            size_hint: (0.4, 0.1)
+            pos_hint: {"x":0.3,"top":0.45}
+            on_press: root.manager.current = 'Demo'   
+        Button:
+            text: "Dont have an account?"
+            size_hint: (0.2, 0.1)
+            pos_hint: {"x":0.7}
+            on_press: root.manager.current = 'RegisterPage'
+
+<RegisterPage>:
+    name: 'RegisterPage'
+    FloatLayout:
+        MDLabel:
+            text: "Welcome to Registration Page"
+            pos_hint : {"x":0.17, "top":1.4}
+        MDTextField:
+            hint_text: "Name"
+            helper_text_mode: "persistent"
+            pos_hint : {"x":0.2,"top":0.7}
+            size_hint: (0.6, 0.13)
+        MDTextField:
+            hint_text: "Phone Number"
+            helper_text_mode: "persistent"
+            pos_hint : {"x":0.2,"top":0.6}
+            size_hint: (0.6, 0.13)
+        MDTextField:
+            id: Email
+            email: True
+            hint_text: "Email"
+            helper_text_mode: "persistent"
+            pos_hint : {"x":0.2,"top":0.5}
+            size_hint: (0.6, 0.13)
+        MDTextField:
+            id: Password
+            password: True
+            hint_text: "Password"
+            helper_text_mode: "persistent"
+            pos_hint : {"x":0.2,"top":0.4}
+            size_hint: (0.6, 0.13)
+        RoundedButton2:
+            text: "Register"
+            size_hint: (0.4, 0.1)
+            pos_hint: {"x":0.3,"top":0.25}
+            on_press: root.manager.current = 'Demo'
+        Button:
+            text: "Have an account?"
+            size_hint: (0.3, 0.1)
+            pos_hint: {"x":0.7}
+            on_press: root.manager.current = 'LoginPage'
+
+<PageOne>:
+    name: 'PageOne'
+    canvas:
+        Rectangle:
+            source: '../Camera Roll./Untitled-11.png'
+            pos: self.pos
+            size: self.size
+
+    Label:
+        id: ml2
+        text: ""
+        font_size: 12
+        pos_hint: {'center_x': 0.52, 'center_y': 0.43}
+
+
+    Image:
+        id: my2
+        source: ""
+        pos_hint: {'center_x': 0.78, 'center_y': 0.75}
+        size_hint: 0.3, 0.3
+
+
+        Image:
+            source: "../Camera Roll./Untitled-18.png"
+            keep_ratio: True
+            allow_stretch: True
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    Image:
+        id: my3
+        source: ""
+        pos_hint: {'center_x': 0.23, 'center_y': 0.75}
+        keep_ratio: False
+        allow_stretch: True
+        size_hint: 0.3, 0.20
+
+        Image:
+            source: "../Camera Roll./Untitled-18.png"
+            keep_ratio: False
+            allow_stretch: True
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(100), dp(115)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on()
+        on_release: root.hello_off()
+        on_release: root.open_phone_url()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.24}
+        size_hint: 0.78, 0.09
+
+        Image:
+            id: my_image31
+            source: '../Camera Roll./Untitled-19.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(270), dp(170)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on2()
+        on_release: root.hello_off2()
+        on_release: root.reset_img()
+        on_release: app.root.current = 'Demo'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+        size_hint: 0.78, 0.09
+
+        Image:
+            id: my_image32
+            source: '../Camera Roll./Untitled-20.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(270), dp(170)
+
+<PageTwo>:
+    name: 'PageTwo' 
+
+    Image:
+        id:web_cam
+  
+
+    Image:
+        source: './Images/CameraBackground.png'
+        allow_stretch: True
+        keep_ratio: False
+
+    ClickMeButton:   
+        pos_hint: {'center_x':0.5,'top':.20}
+        size_hint: (.87,.13)
+        on_press: root.GetImage()    
+        on_release: root.manager.current = 'PageThree'
+
+<PageThree>:
+    name: 'PageThree'
+    canvas:
+        Rectangle:
+            source: '../Camera Roll./Untitled-11.png'
+            pos: self.pos
+            size: self.size
+
+    Label:
+        id: mle2
+        text: ""
+        font_size: 12
+        pos_hint: {'center_x': 0.52, 'center_y': 0.43}
+
+
+    Image:
+        id: mye2
+        source: ""
+        pos_hint: {'center_x': 0.78, 'center_y': 0.75}
+        size_hint: 0.3, 0.3
+
+
+        Image:
+            source: "../Camera Roll./Untitled-18.png"
+            keep_ratio: True
+            allow_stretch: True
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    Image:
+        id: mye3
+        source: ""
+        pos_hint: {'center_x': 0.23, 'center_y': 0.75}
+        keep_ratio: False
+        allow_stretch: True
+        size_hint: 0.3, 0.20
+
+        Image:
+            source: "../Camera Roll./Untitled-18.png"
+            keep_ratio: False
+            allow_stretch: True
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(100), dp(115)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on()
+        on_release: root.hello_off()
+        on_release: root.open_phone_url()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.24}
+        size_hint: 0.78, 0.09
+
+        Image:
+            id: my_image41
+            source: '../Camera Roll./Untitled-19.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(270), dp(170)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on2()
+        on_release: root.hello_off2()
+        on_release: root.reset_img()
+        on_release: app.root.current = 'Demo'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+        size_hint: 0.78, 0.09
+
+        Image:
+            id: my_image42
+            source: '../Camera Roll./Untitled-20.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(270), dp(170)
+
+<PageFour>:
+    name: 'PageFour'
+    canvas:
+        Rectangle:
+            source: '../Camera Roll./Untitled-14.png'
+            pos: self.pos
+            size: self.size
+
+    Image:
+        id: my31
+        source: ""
+        allow_stretch: True
+        keep_ratio: False
+        pos_hint: {'center_x': 0.23, 'center_y': 0.75}
+        size_hint: 0.28, 0.20
+
+        Image:
+            source: "../Camera Roll./Untitled-18.png"
+            keep_ratio: False
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(240), dp(120)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on()
+        on_release: root.hello_off()
+        on_release: root.manager.current = 'PageOne'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+        size_hint: 0.8, 0.09
+
+        Image:
+            id: my_image2
+            source: '../Camera Roll./Untitled-16.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(280), dp(175)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on2()
+        on_release: root.hello_off2()
+        on_release: root.manager.current = 'Demo'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+        size_hint: 0.8, 0.09
+
+
+        Image:
+            id: my_image3
+            source: '../Camera Roll./Untitled-20.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(280), dp(175)
+
+<NotFoundPageScan>:
+    name: 'NotFoundPageScan'
+    canvas:
+        Rectangle:
+            source: '../Camera Roll./Untitled-14.png'
+            pos: self.pos
+            size: self.size
+
+    Image:
+        id: nfps1
+        source: ""
+        allow_stretch: True
+        keep_ratio: False
+        pos_hint: {'center_x': 0.23, 'center_y': 0.75}
+        size_hint: 0.28, 0.20
+
+        Image:
+            source: "../Camera Roll./Untitled-18.png"
+            keep_ratio: False
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(240), dp(120)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on()
+        on_release: root.hello_off()
+        on_release: root.manager.current = 'PageTwo'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+        size_hint: 0.8, 0.09
+
+        Image:
+            id: nfps2
+            source: '../Camera Roll./Untitled-16.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(280), dp(175)
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        on_press: root.hello_on2()
+        on_release: root.hello_off2()
+        on_release: root.manager.current = 'Demo'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+        size_hint: 0.8, 0.09
+
+
+        Image:
+            id: nfps3
+            source: '../Camera Roll./Untitled-20.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(280), dp(175)
+
+<EnterLostChildDetails>:
+    name: 'EnterLostChildDetails'
+    Image:
+        source: './Camera Roll./Untitled-26.png'
+        pos: self.pos
+        size: self.size
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        pos_hint: {'center_x': 0.5, 'center_y': 0.78}
+        on_release: root.pff_change()
+        size_hint: 0.25, 0.09
+
+
+        Image:
+            id: Pg3im1
+            source: './Camera Roll./Untitled-27.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(180), dp(90)
+
+    TextInput:
+        id: name_input
+        hint_text: "Enter Name "
+        size_hint: 0.5, 0.06
+        pos_hint: {'center_x': 0.6, 'center_y': 0.565}
+
+    TextInput:
+        id: age_input
+        hint_text: "Enter Age "
+        size_hint: 0.5, 0.06
+        pos_hint: {'center_x': 0.5, 'center_y': 0.479}
+
+    TextInput:
+        id: date_input
+        hint_text: "Missing Since Date "
+        size_hint: 0.5, 0.06
+        pos_hint: {'center_x': 0.65, 'center_y': 0.389}
+
+    TextInput:
+        id: mobile_input
+        hint_text: "guardians mobile no"
+        size_hint: 0.5, 0.06
+        pos_hint: {'center_x': 0.6, 'center_y': 0.3}
+
+    TextInput:
+        id: address_input
+        hint_text: "Address"
+        size_hint: 0.5, 0.06
+        multiline: True
+        pos_hint: {'center_x': 0.55, 'center_y': 0.22}
+
+    Button:
+        text: ""
+        text_color: get_color_from_hex('#494646')
+        md_bg_color: get_color_from_hex('#DDF0E9')
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+        on_release:
+            root.save_data(self)
+            app.root.current = 'Demo'
+        size_hint: 0.7, 0.09
+
+
+        Image:
+            id: pg3im2
+            source: './Camera Roll./Untitled-28.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: dp(250), dp(150)
+
+
+<RoundedButton@Button>    
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('81CBAA')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<RoundedButton2@Button>
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('DDF0E9')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<RoundedButton3@Button>
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('81CBAA')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos       
+            radius: [20]
+
+<RoundedButton4@Button>
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgba: (1,0,0,1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<RoundedButton5@Button>
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('DDF0E9')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+
+<ClickMeButton@Button>
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('C0C0C0')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            source: './Images/ScanFace.png'
+            radius: [20]
+
+
+<Imageandbackground@Button> 
+    background_color: (0,0,0,0)
+    background_normal:
+    canvas.before:
+        Color:
+            rgb: 1, 1, 1     
+        Ellipse:
+            pos: 100, 305
+            size: 100 , 100 
+            source: '../Camera Roll./Untitled-27.png'
+            angle_start: 0
+            angle_end: 360
+
+
